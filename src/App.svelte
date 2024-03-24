@@ -5,7 +5,7 @@
 	let query
 	const BACKEND_URL = "https://metasearch-jtutwlgqma-uc.a.run.app"
 	//const BACKEND_URL = "http://localhost"
-	let slider_value = 75
+	let slider_value = 85
 	let message
 	let result
 
