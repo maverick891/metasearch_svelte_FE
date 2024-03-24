@@ -16,11 +16,13 @@
 			console.log("EventSource created..")
 			const evtSource = new EventSource(BACKEND_URL+`/metaSearchStream?query=`+query+`&sim=`+slider_value/100);
 			console.log("After EventSource created..")
+			message = "Performing Google Search..."
 			
 			evtSource.addEventListener("update", function(event) {
 			message = event['data'];
 			console.log(event);
 			});
+
 			evtSource.addEventListener("end", function(event) {
 				console.log('Handling end....');
 				message = event['data'];
@@ -31,6 +33,7 @@
 				evtSource.close(); 
 				toggled = false
 			});
+
 			return false;
 
 		}
