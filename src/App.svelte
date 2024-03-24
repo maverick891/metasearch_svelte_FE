@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition'
 	let toggled = false
 	let query
-	const BACKEND_URL = "http://localhost:80"
+	const BACKEND_URL = "https://metasearch-jtutwlgqma-uc.a.run.app"
 	let slider_value = 75
 	let message
 	let result
@@ -40,7 +40,8 @@
 	<DarkMode/>
 	<Heading tag="h1">Summarize</Heading>-->
 	<!-- Hero -->
-<DarkMode class="hidden"/>
+<!--
+	<DarkMode class="hidden"/>-->
 <div class="relative overflow-hidden">
 	<div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24 min-w-[55rem] -mt-24">
 	  <div class="text-center">
