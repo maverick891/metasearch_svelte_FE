@@ -9,26 +9,32 @@
 	let result
 
 	async function Meta_Search() {
-		toggled = true
-		result = undefined
-		console.log("EventSource created..")
-		const evtSource = new EventSource(BACKEND_URL+`/metaSearchStream?query=`+query+`&sim=`+slider_value/100);
-		console.log("After EventSource created..")
-		
-		evtSource.addEventListener("update", function(event) {
-		message = event['data'];
-		console.log(event);
-		});
-		evtSource.addEventListener("end", function(event) {
-			console.log('Handling end....');
+		if (!toggled) {
+
+			toggled = true
+			result = undefined
+			console.log("EventSource created..")
+			const evtSource = new EventSource(BACKEND_URL+`/metaSearchStream?query=`+query+`&sim=`+slider_value/100);
+			console.log("After EventSource created..")
+			
+			evtSource.addEventListener("update", function(event) {
 			message = event['data'];
-			message = "";
-			result = JSON.parse(event['data']);
-			result.sort((a,b) => b.counter - a.counter);
-			console.log(event['data']);
-			evtSource.close(); 
-		});
-		return false;
+			console.log(event);
+			});
+			evtSource.addEventListener("end", function(event) {
+				console.log('Handling end....');
+				message = event['data'];
+				message = "";
+				result = JSON.parse(event['data']);
+				result.sort((a,b) => b.counter - a.counter);
+				console.log(event['data']);
+				evtSource.close(); 
+				toggled = false
+			});
+			return false;
+
+		}
+		
 	}
 	//class={`transition-all duration-500 ease-in-out ${toggled ? 'text-2xl md:text-2xl lg:text-3xl' : 'text-4xl md:text-5xl lg:text-6xl'}`}
 	//class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-gray-200"
