@@ -4,6 +4,7 @@
 	let toggled = false
 	let query
 	const BACKEND_URL = "https://metasearch-jtutwlgqma-uc.a.run.app"
+	//const BACKEND_URL = "http://localhost"
 	let slider_value = 75
 	let message
 	let result
@@ -140,7 +141,7 @@
 					</TableHead>
 					<TableBody>
 						{#each result as res}
-						{#if res.counter > 4}
+						{#if res.counter > 1}
 							<TableBodyRow>
 								<TableBodyCell>{res.string}</TableBodyCell>
 								<TableBodyCell>{res.counter}</TableBodyCell>
